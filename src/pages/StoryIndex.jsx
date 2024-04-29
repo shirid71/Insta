@@ -29,8 +29,6 @@ export function StoryIndex() {
         console.log('%c username ', 'font-size: 1rem; color: green;', username);
         navigate(`/${username}`)
     }
-    console.log('STORIES HEREEE', stories)
-    console.log('USER HEREEE', user)
 
     if (stories.length && !user) return <LoginSignup />
 
@@ -45,7 +43,6 @@ export function StoryIndex() {
 
             <div className='contant'>
                 <StoriesList stories={stories} likesIsOpen={likesIsOpen} />
-                {/* <StoriesList stories={stories.reverse()} likesIsOpen={likesIsOpen} /> */}
                 <Suggestions user={user} goToProfile={goToProfile} switchIsOpen={switchIsOpen} />
             </div>
         </Fragment>

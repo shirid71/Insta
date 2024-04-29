@@ -1,6 +1,5 @@
 
 import { storageService } from './async-storage.service.js'
-// import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
 import { utilService } from './util.service.js'
 
@@ -16,7 +15,10 @@ export const storyService = {
   sendNotif
 }
 const STORAGE_KEY = 'story'
-_createSrories()
+const curStories = utilService.loadFromStorage(STORAGE_KEY)
+if(!curStories){
+  _createSrories()
+}
 window.ss = storyService
 
 // async function onAddStoryComment(storyId, comment) {
@@ -32,11 +34,9 @@ function onRemoveStoryComment(storyId) {
 }
 
 async function query() {
-  console.log('%c Loading robots before', 'font-size: 1rem; color: blue;');
   
   try {
     let stories = await storageService.query(STORAGE_KEY)
-    console.log('%c Loading robots after', 'font-size: 1rem; color: blue;', stories);
     return stories.reverse() // TODO: ADD FILTER BY!
   } catch (err) {
     console.log(err)
@@ -80,8 +80,7 @@ async function save(story) {
       fullname: user.fullname,
       imgUrl: user.imgUrl
     }
-    // savedStory = await storageService.post(STORAGE_KEY, story)
-    savedStory = await storageService.post('story', story)
+    savedStory = await storageService.post(STORAGE_KEY, story)
   }
   console.log(savedStory)
   return savedStory
@@ -131,6 +130,7 @@ function getEmptyStory() {
 }
 
 function _createSrories() {
+  console.log("_createSrories")
   const story = [
     {
       _id: "s104",
@@ -582,7 +582,6 @@ function _createSrories() {
   //TODO: change to stories
   utilService.saveToStorage(STORAGE_KEY, story)
 
-  // storageService._save(STORAGE_KEY, story)
 }
 
 
