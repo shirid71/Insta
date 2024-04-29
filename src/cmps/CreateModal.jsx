@@ -1,10 +1,10 @@
-// import { FileUploader } from "react-drag-drop-files";
 
 import { useState } from "react";
 import { storyService } from "../services/story.service";
 import { ImgUploader } from "./ImgUploader";
 import { useSelector } from 'react-redux';
 import { toggleModal } from "../store/system.action";
+import { getActionAddStory } from '../store/story.actions.js'
 import EmojiPicker from "emoji-picker-react";
 
 const CreateStoryModal = () => {
@@ -13,11 +13,6 @@ const CreateStoryModal = () => {
     const logedinUser = useSelector(storeState => storeState.userModule.user)
 
     const fileTypes = ["JPEG", "PNG", "GIF"];
-
-    const [file, setFile] = useState(null);
-    const fileHandleChange = (file) => {
-        setFile(file);
-    };
 
     const onEmojiClick = (emojiObject, event) => {
         setCreatedStory(prevStory => ({ ...prevStory, txt: createdStory.txt + emojiObject.emoji }))
@@ -30,14 +25,14 @@ const CreateStoryModal = () => {
 
     function handleChange({ target }) {
         let { value, type, name: field } = target
-        // value = type === 'number' ? +value : value
         setCreatedStory(prevStory => ({ ...prevStory, [field]: value }))
     }
 
     function onSaveStory(ev) {
         ev.preventDefault()
         if (!createdStory.imgUrl.length) return
-        storyService.save(createdStory).then(() => {
+        storyService.save(createdStory).then((st) => {
+            getActionAddStory(st)
             toggleModal()
             window.location.reload(false)
         })

@@ -1,6 +1,5 @@
 
 import { storageService } from './async-storage.service.js'
-// import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
 import { utilService } from './util.service.js'
 
@@ -16,7 +15,10 @@ export const storyService = {
   sendNotif
 }
 const STORAGE_KEY = 'story'
-_createSrories()
+const curStories = utilService.loadFromStorage(STORAGE_KEY)
+if(!curStories){
+  _createSrories()
+}
 window.ss = storyService
 
 // async function onAddStoryComment(storyId, comment) {
@@ -32,11 +34,9 @@ function onRemoveStoryComment(storyId) {
 }
 
 async function query() {
-  console.log('%c Loading robots before', 'font-size: 1rem; color: blue;');
   
   try {
     let stories = await storageService.query(STORAGE_KEY)
-    console.log('%c Loading robots after', 'font-size: 1rem; color: blue;', stories);
     return stories.reverse() // TODO: ADD FILTER BY!
   } catch (err) {
     console.log(err)
@@ -50,13 +50,13 @@ async function query() {
 }
 
 function getById(storyId) {
-  // return storageService.get(STORAGE_KEY, storyId)
-  return storageService.get(`story/${storyId}`)
+  return storageService.get(STORAGE_KEY, storyId)
+  // return storageService.get(`story/${storyId}`)
 }
 
 async function remove(storyId) {
-  // await storageService.remove(STORAGE_KEY, storyId)
-  return storageService.delete(`story/${storyId}`)
+  await storageService.remove(STORAGE_KEY, storyId)
+  // return storageService.delete(`story/${storyId}`)
 }
 
 async function sendNotif(notif) {
@@ -66,8 +66,8 @@ async function sendNotif(notif) {
 async function save(story) {
   var savedStory
   if (story._id) {
-    // savedStory = await storageService.put(STORAGE_KEY, story)
-    savedStory = await storageService.put(`story/${story._id}`, story)
+    savedStory = await storageService.put(STORAGE_KEY, story)
+    // savedStory = await storageService.put(`story/${story._id}`, story)
 
   } else {
     // Later, owner is set by the backend
@@ -80,8 +80,7 @@ async function save(story) {
       fullname: user.fullname,
       imgUrl: user.imgUrl
     }
-    // savedStory = await storageService.post(STORAGE_KEY, story)
-    savedStory = await storageService.post('story', story)
+    savedStory = await storageService.post(STORAGE_KEY, story)
   }
   console.log(savedStory)
   return savedStory
@@ -131,6 +130,7 @@ function getEmptyStory() {
 }
 
 function _createSrories() {
+  console.log("_createSrories")
   const story = [
     {
       _id: "s104",
@@ -282,7 +282,7 @@ function _createSrories() {
     {
       _id: "s105",
       txt: "It’s officially Pizza Picnic season! ✨",
-      imgUrl: [ "https://scontent-lhr8-2.cdninstagram.com/v/t39.30808-6/438119421_18320915014192753_7014517998892722514_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMDQ4eDIwNDguc2RyLmYzMDgwOCJ9&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=101&_nc_ohc=LP-scTFEm5gAb7-hIhw&edm=AA5fTDYAAAAA&ccb=7-5&ig_cache_key=MzM0NTI4NzQxNTQ0NDAyNzQwMQ%3D%3D.2-ccb7-5&oh=00_AfA_178hspmu0uLnYZ3NUUWf_4agFznxPbKBuhCtcW-7ug&oe=661E78FA&_nc_sid=cf751b"],
+      imgUrl: [ "https://www.southernliving.com/thmb/j_6gABRIAMegN6RFHxOgbUqBxjA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"],
       by: {
         _id: "seller1",
         fullname: "The Little Sister Pizza",
@@ -582,7 +582,6 @@ function _createSrories() {
   //TODO: change to stories
   utilService.saveToStorage(STORAGE_KEY, story)
 
-  // storageService._save(STORAGE_KEY, story)
 }
 
 
