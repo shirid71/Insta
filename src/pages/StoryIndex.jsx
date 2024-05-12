@@ -5,29 +5,38 @@ import { loadStories } from '../store/story.actions.js'
 import { StoriesList } from '../cmps/StoriesList.jsx'
 import { LikesModal } from '../cmps/LikesModal.jsx';
 import { LoginSwitch } from '../cmps/LoginSwitch.jsx';
-import { loadUsers } from '../store/user.actions.js';
+import { loadUsers, loadSuggested } from '../store/user.actions.js';
 import { Suggestions } from '../cmps/sugesstion.jsx';
 import { LoginSignup } from '../cmps/LoginSignup.jsx';
+import { userService } from '../services/user.service'
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const user = useSelector(storeState => storeState.userModule.user)
+    const users = useSelector(storeState => storeState.userModule.users)
+    const suggestedUsers = useSelector(storeState => storeState.userModule.suggestedUsers)
     const [likes, likesIsOpen] = useState([])
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
 
+    const fetchData = async () => {
+        await loadSuggested()
+        await loadStories()
+        await loadUsers()
+    }
+    
     useEffect(() => {
         if (stories.length && user) return
-        const fetchData = async () => {
-            await loadStories()
-            await loadUsers()
-        }
         fetchData()
     }, [])
 
     function goToProfile(username) {
-        console.log('%c username ', 'font-size: 1rem; color: green;', username);
         navigate(`/${username}`)
+    }
+
+    async function addFollow(suggestedUser) {
+        userService.addFollowTo(suggestedUsers, user, suggestedUser)
+         fetchData()
     }
 
     if (stories.length && !user) return <LoginSignup />
@@ -43,7 +52,7 @@ export function StoryIndex() {
 
             <div className='contant'>
                 <StoriesList stories={stories} likesIsOpen={likesIsOpen} />
-                <Suggestions user={user} goToProfile={goToProfile} switchIsOpen={switchIsOpen} />
+                <Suggestions user={user} suggestedUsers={suggestedUsers} goToProfile={goToProfile} switchIsOpen={switchIsOpen} addFollow={addFollow}/>
             </div>
         </Fragment>
     )

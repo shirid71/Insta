@@ -7,9 +7,6 @@ import { userService } from "../services/user.service";
 import { removeStory } from "../store/story.actions";
 import { MsgForm } from "./MsgForm";
 
-
-
-// export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
@@ -99,6 +96,25 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         setSave(checkSave())
     }
 
+    function getTimePassed(startDate) {
+        // Current date and time
+        const currentDate = new Date();
+        let unit = "h";
+    
+        // Calculate the time difference in milliseconds
+        const timeDiff = currentDate.getTime() - new Date(startDate).getTime();
+    
+        // Convert milliseconds to the specified unit (hours or days)
+        let timePassed;
+        timePassed = Math.round(Math.abs(timeDiff / (1000 * 60 * 60))); // round absolute value of milliseconds to hours
+        if (timePassed >= 24) {
+            // If time passed is more than 24 hours, convert to days
+            timePassed = Math.round(Math.abs(timePassed / 24));
+            unit = "d";
+        }
+        return timePassed + unit;
+    }
+
     return <div>
         <div className='top-side-bar'></div>
         <article className="story-preview">
@@ -108,7 +124,8 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                     <Link to={story.by.username} className="story-user-name link">{story.by.username}</Link>
                     <div className="time">
                         <span>•</span>
-                        <time>1h</time>
+                        {/* <time>1h</time> */}
+                        <time>{getTimePassed(story.upload_time)}</time>
                     </div>
                 </div>
                 <svg onClick={() => onRemoveStory(story)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>

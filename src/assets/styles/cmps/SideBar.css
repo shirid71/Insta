@@ -2,7 +2,7 @@
 
     .nav-btn {
         position: relative;
-        // display: flex;
+        /* // display: flex; */
 
         .new-msg {
             width: 10px;
@@ -79,11 +79,11 @@
         height: 50px;
         width: 100%;
         display: flex;
-        // justify-content: center;
-        // align-items: center;
+        /* // justify-content: center;
+        // align-items: center; */
         flex-direction: row;
         position: fixed;
-        // top: 93.9vh;
+        /* // top: 93.9vh; */
         bottom: 0;
         z-index: 2;
         border-top: 1px solid rgb(219, 219, 219);
@@ -101,10 +101,6 @@
         .nav-name {
             display: none;
         }
-
-        // img{
-        //     display: none;
-        // }
 
         .nav-btn {
             width: 30px;
@@ -141,13 +137,13 @@
         .nav-btn {
             color: #262626;
             width: 30px;
-            // margin-top: 4px;
+            /* // margin-top: 4px;
             // margin-bottom: 4px;
-            // border-radius: 25px;
+            // border-radius: 25px; */
             font-family: 'Segoe UI', sans-serif;
             text-decoration: none;
             display: flex;
-            // gap: 10px;
+            /* // gap: 10px; */
             align-items: center;
             cursor: pointer;
 
@@ -184,7 +180,7 @@
 
 }
 
-///////// normal //////
+/* ///////// normal ////// */
 @include for-narrow-layout {
 
     .test {
@@ -235,7 +231,7 @@
 
             }
 
-            // padding: 12px 8px 12px 20px;
+            /* // padding: 12px 8px 12px 20px; */
         }
 
 
@@ -346,7 +342,7 @@
 
 }
 
-/////// wide ///////
+/* /////// wide /////// */
 @include for-wide-layout {
     .side-bar {
         padding: 0.615rem 0.92rem 1.54rem;
@@ -391,7 +387,7 @@
 
             }
 
-            // padding: 12px 8px 12px 20px;
+            /* // padding: 12px 8px 12px 20px; */
         }
     }
 

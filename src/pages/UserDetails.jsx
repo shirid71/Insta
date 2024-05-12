@@ -1,21 +1,30 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { loadStories } from "../store/story.actions"
 import { IoMdApps } from 'react-icons/io'
 import { BsBookmark, BsPersonSquare } from 'react-icons/bs'
 import { useNavigate, useParams } from 'react-router-dom'
-import { loadUsers } from '../store/user.actions'
+import { loadSuggested, loadUsers } from '../store/user.actions'
 import { userService } from '../services/user.service'
+import { FollowModal } from '../cmps/FollowModal'
 
 export function UserDetails() {
   const user = useSelector(storeState => storeState.userModule.user)
   const users = useSelector(storeState => storeState.userModule.users)
+  const suggestedUsers = useSelector(storeState => storeState.userModule.suggestedUsers)
+
   const stories = useSelector(storeState => storeState.storyModule.stories)
   const params = useParams()
 
+  const [followers, followIsOpen] = useState([])
   const [follow, setFollow] = useState('')
   const [toggle, setToggle] = useState('posts')
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const [isFollowModalOpen, setFollowModalIsOpen] = useState([])
+  // const [followModal, setFollowModal] = useState(false)
+
 
   const navigate = useNavigate()
 
@@ -26,11 +35,15 @@ export function UserDetails() {
   useEffect(() => {
     loadStories()
     loadUsers()
+    loadSuggested()
   }, [])
 
   if (loggedInUser) userProfile = user
   else {
     userProfile = users.find(user => user.username === params.username)
+    if(!userProfile){
+      userProfile = suggestedUsers.find(user => user.username === params.username)
+    }
   }
 
   const profileStories = stories.filter(story => story.by._id === userProfile._id)
@@ -41,10 +54,13 @@ export function UserDetails() {
     setToggle(str)
   }
 
+  function onFollow() {
+    setFollowModal(followModal)
+}
+
   function storyModal(story) {
     navigate(`/post/${story._id}`)
   }
-
 
   function checkFollow() {
     return user.following.some(user => user._id === userProfile._id)
@@ -54,6 +70,9 @@ export function UserDetails() {
     navigate(`/inbox/${userProfile._id}`)
   }
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   function toggleFollow() {
     if (checkFollow()) {
@@ -85,7 +104,8 @@ export function UserDetails() {
   }
 
   if (!userProfile) return <div className="loading-page"><span className="loading"></span></div>
-  return <div className="profile-page">
+  return(
+  <div className="profile-page">
     <div className="profile-container">
       <section className="profile-header">
         <section className="profile-photo"><img src={userProfile.imgUrl} /></section>
@@ -104,8 +124,8 @@ export function UserDetails() {
             </div>}
           <div className="user-info">
             <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>
-            <section><a className="user-number">{userProfile.followers.length}</a><a> followers</a></section>
-            <section><a className="user-number">{userProfile.following.length}</a><a> following</a></section>
+            <section><a className="user-number" onClick={toggleModal}>{userProfile.followers.length} followers</a></section>
+            <section><a className="user-number" onClick={toggleModal}>{userProfile.following.length} following</a></section>
           </div>
           <div className="user-bio">
             <a className="user-name">{userProfile.fullname}</a>
@@ -144,8 +164,7 @@ export function UserDetails() {
         }
       </div>
     </div>
-  </div>
-
+  </div>)
 }
 
 

@@ -11,7 +11,8 @@ export function LoginSignup() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        loadUsers()
+        loadUsers('users')
+        //loadSuggested()
     }, [])
 
 
@@ -36,8 +37,8 @@ export function LoginSignup() {
         }
     }
 
-    async function loadUsers() {
-        const users = await userService.getUsers()
+    async function loadUsers(type) {
+        const users = await userService.getUsers(type)
         setUsers(users)
     }
 

@@ -1,5 +1,5 @@
 
-import { StoryPreview } from "./story-preview"
+import { StoryPreview } from "./StoryPreview"
 
 export function StoriesList({ stories, likesIsOpen }) {
     // stories = stories.reverse()

@@ -15,6 +15,7 @@ export function LoginSwitch({ switchIsOpen }) {
 
     useEffect(() => {
         loadUsers()
+     //  loadSuggested()
     }, [])
 
     function onClose() {
@@ -49,7 +50,7 @@ export function LoginSwitch({ switchIsOpen }) {
     }
 
     async function loadUsers() {
-        const users = await userService.getUsers()
+        const users = await userService.getUsers('users')
         setUsers(users)
     }
 

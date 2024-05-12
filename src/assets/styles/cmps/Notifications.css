@@ -55,9 +55,9 @@
             align-items: center;
 
             img {
-                // width: 56px;
+                /* // width: 56px;
                 // height: 56px;
-                // object-fit: cover;
+                // object-fit: cover; */
                 border-radius: 50%;
             }
 
@@ -71,8 +71,8 @@
                 font-weight: 600;
 
                 .message {
-                    // display: flex;
-                    // gap: 5px;
+                    /* // display: flex;
+                    // gap: 5px; */
                     color: #000000;
                 }
 

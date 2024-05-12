@@ -42,21 +42,14 @@ async function query() {
     console.log(err)
     throw err
   }
-
-  // const stories = await storageService.query(STORAGE_KEY)
-  // if (!stories || !stories.length) _createSrories()
-  // return storageService.query(STORAGE_KEY)
-  // return httpService.get(STORAGE_KEY, filterBy)
 }
 
 function getById(storyId) {
   return storageService.get(STORAGE_KEY, storyId)
-  // return storageService.get(`story/${storyId}`)
 }
 
 async function remove(storyId) {
   await storageService.remove(STORAGE_KEY, storyId)
-  // return storageService.delete(`story/${storyId}`)
 }
 
 async function sendNotif(notif) {
@@ -67,18 +60,16 @@ async function save(story) {
   var savedStory
   if (story._id) {
     savedStory = await storageService.put(STORAGE_KEY, story)
-    // savedStory = await storageService.put(`story/${story._id}`, story)
 
   } else {
-    // Later, owner is set by the backend
-    // story.owner = userService.getLoggedinUser()
     const user = userService.getLoggedinUser()
     console.log(story)
     story.by = {
       _id: user._id,
       username: user.username,
       fullname: user.fullname,
-      imgUrl: user.imgUrl
+      imgUrl: user.imgUrl,
+      upload_time: new Date()
     }
     savedStory = await storageService.post(STORAGE_KEY, story)
   }
@@ -135,6 +126,7 @@ function _createSrories() {
     {
       _id: "s104",
       txt: "This is our reality.",
+      upload_time:"2024-04-01T15:03:31.000Z",
       imgUrl: ["https://media.istockphoto.com/id/2003347922/photo/friends-with-tradition-rural-hat-walking-at-beautiful-rice-field-landscape-in-bali.jpg?s=1024x1024&w=is&k=20&c=3Ov4E5kxMH9PsELdIWVF6ypanrdKn1alLXlsym6tfZk=", "https://media.istockphoto.com/id/2074989507/photo/friends-with-tradition-rural-hat-walking-at-beautiful-rice-field-landscape-in-bali.jpg?s=1024x1024&w=is&k=20&c=VrNu3vVBv-PcY7LBlOyTrDyHDhnxv0oxld7Av_8Wvx4=", "https://media.istockphoto.com/id/2074989516/photo/friends-with-tradition-rural-hat-walking-at-beautiful-rice-field-landscape-in-bali.jpg?s=1024x1024&w=is&k=20&c=h0wRpXl0O46Na9iRM9tKgzqD0er6SWFKtGrReUx7oD8="],
       by: {
         _id: "a101",
@@ -221,6 +213,7 @@ function _createSrories() {
     {
       _id: "s108",
       txt: "Your reaction? 😍",
+      upload_time:"2024-04-05T15:03:31.000Z",
       imgUrl: ["https://57hours.com/wp-content/uploads/2022/11/classic-tour-du-mont-blanc-guided-trek.jpg","https://57hours.com/wp-content/uploads/2022/12/mont-blanc-reflection-sunset.jpg","https://57hours.com/wp-content/uploads/2022/12/tmb-ascending-hill.jpg"],
       by: {
         _id: "u109",
@@ -236,7 +229,6 @@ function _createSrories() {
             fullname: "Ofir Danan",
             username: "ofirid",
             imgUrl: "https://media.istockphoto.com/id/1476195033/photo/happy-young-man-smiling-and-looking-away-in-yellow-studio.jpg?s=2048x2048&w=is&k=20&c=K4utqv8tVZJrF8MCods2zp0t3C-ZObqhibttXupryzQ="
-            // imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
           },
 
           txt: "When can we leave?",
@@ -282,6 +274,7 @@ function _createSrories() {
     {
       _id: "s105",
       txt: "It’s officially Pizza Picnic season! ✨",
+      upload_time:"2024-04-12T15:03:31.000Z",
       imgUrl: [ "https://www.southernliving.com/thmb/j_6gABRIAMegN6RFHxOgbUqBxjA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"],
       by: {
         _id: "seller1",
@@ -399,6 +392,7 @@ function _createSrories() {
     {
       _id: "s106",
       txt: "worldwide shipping",
+      upload_time:"2024-04-22T15:03:31.000Z",
       imgUrl: ["https://www.dior.com/couture/var/dior/storage/images/pushs-editos/folder-cruise-23-femme2/folder-prelaunch/m9334utzqm928/38188347-1-eng-GB/m9334utzqm928_1440_1200.png",
         "https://cdn.cliqueinc.com/posts/295126/best-dior-bags-295126-1658183714371-main.700x0c.jpg",
         "https://www.dior.com/couture/var/dior/storage/images/pushs-editos/folder-cruise-23-femme2/m1286zmdwm884/38149056-1-eng-GB/m1286zmdwm884_1440_1200.jpg"],
@@ -486,7 +480,8 @@ function _createSrories() {
     },
     {
       _id: "s107",
-      txt: "",
+      txt: "Nice",
+      "upload_time":"2024-04-23T15:03:31.000Z",
       imgUrl: ["https://www.chanel.com/images//t_one///q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/j12-watch-caliber-12-2-33-mm-black-silver-black-ceramic-steel-diamond-packshot-default-h9742-9538993422366.jpg"],
       by: {
         _id: "seller3",
@@ -576,10 +571,72 @@ function _createSrories() {
         }
       ]
     },
+    {
+      "_id": "s109",
+      "txt": "Herzelia 5k",
+      "upload_time":"2024-05-01T15:03:31.000Z",
+      "imgUrl": [
+          "https://res.cloudinary.com/dpb75oqpv/image/upload/v1715009778/Insta-uploads/obz5fqqlj2cvt6sow4uf.jpg"
+      ],
+      "by": {
+        "_id": "3110",
+        "username": "shirid",
+        "fullname": "Shiri Hameiri",
+        "imgUrl": "https://i.pinimg.com/564x/31/44/48/31444808f81fcacc1fb91bf32d3f77ec.jpg"
+      },
+        "comments": [],
+        "likedBy": [],
+    },{
+      "_id": "s110",
+        "txt": "Thailand",
+        "upload_time":"2024-05-03T15:03:31.000Z",
+        "imgUrl": [
+            "https://res.cloudinary.com/dpb75oqpv/image/upload/v1715013322/Insta-uploads/tc9jixhwnvctorgzx0yq.jpg"
+        ],
+        "comments": [],
+        "likedBy": [],
+        "by": {
+            "_id": "3110",
+            "username": "shirid",
+            "fullname": "Shiri Hameiri",
+            "imgUrl": "https://i.pinimg.com/564x/31/44/48/31444808f81fcacc1fb91bf32d3f77ec.jpg"
+        }
+    },
+    {
+      "_id": "s111",
+        "txt": "My next destination 🙌",
+        "upload_time":"2024-05-04T15:03:31.000Z",
+        "imgUrl": [
+            "https://res.cloudinary.com/dpb75oqpv/image/upload/v1715013451/Insta-uploads/ypwwyrmipvhwoyd3sygm.jpg"
+        ],
+        "comments": [],
+        "likedBy": [],
+        "by": {
+            "_id": "3110",
+            "username": "shirid",
+            "fullname": "Shiri Hameiri",
+            "imgUrl": "https://i.pinimg.com/564x/31/44/48/31444808f81fcacc1fb91bf32d3f77ec.jpg"
+        }
+    },
+    {
+      "_id": "s112",
+        "txt": "The power of ZEN🧘‍♀️",
+        "upload_time":"2024-05-05T15:03:31.000Z",
+        "imgUrl": [
+            "https://res.cloudinary.com/dpb75oqpv/image/upload/v1715013578/Insta-uploads/djf7rddmkiyd4zwwkgqa.avif"
+        ],
+        "comments": [],
+        "likedBy": [],
+        "by": {
+            "_id": "3110",
+            "username": "shirid",
+            "fullname": "Shiri Hameiri",
+            "imgUrl": "https://i.pinimg.com/564x/31/44/48/31444808f81fcacc1fb91bf32d3f77ec.jpg"
+        }
+    }
 
 
   ]
-  //TODO: change to stories
   utilService.saveToStorage(STORAGE_KEY, story)
 
 }

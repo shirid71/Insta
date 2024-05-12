@@ -1,9 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
-// const Router = ReactRouterDOM.HashRouter
-// import routes from './routes'
-
 import { SideBar } from './cmps/SideBar'
 import { StoryDetails } from './cmps/StoryDetails'
 import { StoryIndex } from './pages/StoryIndex'
@@ -28,12 +25,7 @@ export function RootCmp() {
                     </Route>
                     <Route path="/" element={<StoryIndex />} />
                     <Route path="/:username" element={<UserDetails />} />
-                    {/* <Route path="inbox" element={<Messanger />} > */}
-                        {/* <Route path=":id" element={<Messanger />} /> */}
-                    {/* </Route> */}
                     {/* <Route path="login" element={<LoginSignup />} /> */}
-                    {/* <Route path="chat" element={<ChatApp />} /> */}
-                    {/* <Route path="review" element={<ReviewIndex />} /> */}
                 </Routes>
             </main>
         </div>
