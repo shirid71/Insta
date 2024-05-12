@@ -1,9 +1,9 @@
-////////// Mobile ///////////////
+
 
 @include for-mobile-layout {
 
     .contant-container {
-        // background-color: red;
+        /* background-color: red; */
         width: 100%;
         height: 100%;
         margin: 50px 0;
@@ -17,9 +17,7 @@
     }
 }
 
-///////////////////// normal //////////////
-
-
+/*  normal  */
 @include for-narrow-layout {
 
     .contant-container {
@@ -28,8 +26,8 @@
     }
 
     .contant {
-        // display: grid;
-        // margin: 2.76rem 29.3vh;
+        /* display: grid;
+         margin: 2.76rem 29.3vh; */
         display: flex;
         justify-content: center;
         margin: 2.76rem auto;
@@ -56,6 +54,6 @@
 
 }
 
-//////////////////// Wide ///////////////
+/*  Wide  */
 
 @include for-wide-layout {}

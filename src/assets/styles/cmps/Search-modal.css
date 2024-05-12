@@ -43,7 +43,7 @@
     div {
         border-top: 1px solid #dbdbdb;
 
-        // overflow: auto;
+        /* // overflow: auto; */
         .empty-search {
             display: flex;
             width: 100%;
@@ -102,7 +102,7 @@
     }
 }
 
-////MOBILE
+/* ////MOBILE */
 @include for-mobile-layout {
     .search-modal {
         margin: 0;

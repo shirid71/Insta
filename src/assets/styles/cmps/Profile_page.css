@@ -9,7 +9,7 @@
     height: 100vh;
     padding: 30px 0px;
     width: 961px;
-    // margin: 0 50px;
+    /* // margin: 0 50px; */
 
     .story {
         position: relative;
@@ -54,9 +54,9 @@
 }
 
 .content-container {
-    // background-color: rgb(239, 244, 244);
+    /* // background-color: rgb(239, 244, 244); */
     border-top: 1px solid #c4c4c4;
-    // margin: auto;
+    /* // margin: auto; */
 
 
 }
@@ -114,7 +114,7 @@
         font-family: 'Segoe UI';
         font-size: 16px;
         padding-right: 50px;
-        // align-items: center;
+        /* // align-items: center; */
 
 
 
@@ -166,7 +166,7 @@
     display: flex;
     justify-content: center;
     gap: 50px;
-    // border-top: 1px solid #c4c4c4;
+    /* // border-top: 1px solid #c4c4c4; */
 
     .profile-pics-link {
         display: flex;
@@ -177,7 +177,7 @@
         font-size: 12px;
         font-weight: 600;
         height: 52px;
-        // padding: 20px 0;
+        /* // padding: 20px 0; */
         line-height: 18px;
         letter-spacing: 2px;
         color: #c4c4c4;
@@ -194,13 +194,13 @@
 .profile-stories {
     flex-wrap: wrap;
     padding-bottom: 50px;
-    // padding: 0 1px;
-    // margin: 0 auto;
+    /* // padding: 0 1px;
+    // margin: 0 auto; */
     gap: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     max-width: 961px;
-    // width: 100vh;
+    /* // width: 100vh; */
 
     img {
         width: 307px;
@@ -209,14 +209,14 @@
     }
 }
 
-////MOBILE
+/* ////MOBILE */
 @include for-mobile-layout {
 
     .profile-page {
         width: 100vw;
         height: 100vh;
-        // display: flex;
-        // justify-content: center;
+        /* // display: flex;
+        // justify-content: center; */
     }
 
     .profile-header {
@@ -302,9 +302,9 @@
 
 }
 
-///////// normal //////
+/* ///////// normal ////// */
 @include for-narrow-layout {}
 
 
-///////// Wide //////////
+/* ///////// Wide ////////// */
 @include for-wide-layout {}

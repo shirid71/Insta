@@ -19,7 +19,7 @@ export function AdminApp() {
                     <pre>{JSON.stringify(user, null, 2)}</pre>
                     <button
                         onClick={() => {
-                            removeUser(user._id)
+                            removeUser('users',user._id)
                         }}
                     >
                         Remove {user.username}

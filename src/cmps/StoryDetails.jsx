@@ -159,8 +159,6 @@ export function StoryDetails() {
             </div>
             <div className="details-comment">
                 <div>
-
-
                     <section className="details-header">
                         <div>
                             <img className="prew-user-img" src={story.by.imgUrl} onClick={() => goToProfile(story.by.username)}/>

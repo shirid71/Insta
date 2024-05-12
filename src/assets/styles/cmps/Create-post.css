@@ -1,10 +1,8 @@
-////MOBILE
-
-
+/* MOBILE */
 
 .create-modal {
     position: fixed;
-    // padding-top: 50px;
+    /* padding-top: 50px; */
     width: 100%;
     height: 100%;
     z-index: 15;
@@ -87,9 +85,9 @@
         align-items: center;
 
         img {
-            // width: 100%;
+            /* // width: 100%; */
             max-width: 100%;
-            // max-height: 300px;
+            /* // max-height: 300px; */
             max-height: 574px;
         }
     }
@@ -176,7 +174,7 @@
 
     .create-post-container .img-section {
         max-height: 100%;
-        // object-fit: contain;
+        /* object-fit: contain; */
         object-fit: cover;
     }
 
@@ -188,14 +186,14 @@
         }
     }
 
-    // .create-modal {
+    /* // .create-modal {
     //     position: absolute;
     //     // padding-top: 50px;
     //     width: 100%;
     //     height: 100vh;
     //     z-index: 15;
     //     background-color: rgba(0, 0, 0, 0.645);
-    // }
+    // } */
 
     .create-post {
         width: 100%;
@@ -211,7 +209,7 @@
 }
 
 
-///////// normal //////
+/* ///////// normal ////// */
 @include for-narrow-layout {
     .create-modal {
         padding-top: 50px;
@@ -219,11 +217,11 @@
 }
 
 
-///////// Wide //////////
+/* ///////// Wide ////////// */
 @include for-wide-layout {
 
 
-    .create-modal {
+    /* .create-modal {
         padding-top: 50px;
         //     position: absolute;
         //     padding-top: 50px;
@@ -251,5 +249,5 @@
     //     position: relative;
     //     grid-template-columns: 65% 35%;
     //     height: calc(100% - 42px);
-    // }
+    // } */
 }

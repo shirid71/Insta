@@ -53,7 +53,7 @@
     }
 
     .story-img {
-        // max-height: 400px;
+        /*  max-height: 400px; */
         max-height: 580;
         object-fit: cover;
     }
@@ -67,7 +67,6 @@
         gap: 7px;
         margin-bottom: 10px;
 
-        //mobile input display none?
         form {
             padding: 4px 0;
         }
@@ -183,7 +182,7 @@
 }
 
 
-///////// mobile//////
+/* ///////// mobile////// */
 @include for-mobile-layout {
     .story-preview {
         .story-header {
@@ -206,9 +205,9 @@
     }
 }
 
-///////// normal //////
+/* ///////// normal ////// */
 @include for-narrow-layout {}
 
 
-///////// Wide //////////
+/* ///////// Wide ////////// */
 @include for-wide-layout {}

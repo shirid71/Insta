@@ -20,7 +20,7 @@
     .EmojiPickerReact {
 
         width: 300px;
-        // margin-left: 30vw;
+        /* // margin-left: 30vw; */
     }
 }
 
@@ -49,7 +49,7 @@
 
         width: 500px;
         height: 650px;
-        // object-fit: cover;
+        /*  object-fit: cover; */
 
         img {
             width: 500px;
@@ -151,7 +151,7 @@
         flex-direction: column;
         gap: 34px;
         overflow: auto;
-        // border-bottom: 1px solid rgb(219, 219, 219);
+        /* border-bottom: 1px solid rgb(219, 219, 219); */
     }
 
     .comment {
@@ -275,11 +275,11 @@
 
 
 
-////MOBILE
+/* ////MOBILE */
 @include for-mobile-layout {
     .story-container {
         display: flex;
-        // position: fixed;
+        /*  position: fixed; */
         width: 100%;
         height: 100vh;
 
@@ -309,9 +309,9 @@
 
 }
 
-///////// normal //////
+/* ///////// normal ////// */
 @include for-narrow-layout {}
 
 
-///////// Wide //////////
+/* ///////// Wide ////////// */
 @include for-wide-layout {}

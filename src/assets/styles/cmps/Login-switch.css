@@ -29,7 +29,7 @@
         height: 42px;
         display: flex;
         position: relative;
-        // grid-template-columns: 1fr 34px;
+        /*  grid-template-columns: 1fr 34px; */
         justify-content: center;
         align-items: center;
 
@@ -115,7 +115,7 @@
     }
 
 
-    // LOGIN
+    /* // LOGIN */
 
 }
 

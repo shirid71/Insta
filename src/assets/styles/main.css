@@ -1,0 +1,38 @@
+
+/*  Basics */
+@import "./basics/base.css";
+@import "./basics/forms.css";
+@import "./basics/helpers.css";
+@import "./basics/layout.css";
+
+/* Setup */
+@import "./setup/functions.css";
+@import "./setup/functions.css";
+@import "./setup/functions.css";
+@import "./setup/functions.css";
+
+/* Views */
+@import "./views/AboutUs.css";
+@import "./views/UserDetails.css";
+
+/* Components */
+@import "./cmps/App-container.css";
+@import "./cmps/AppFooter.css";
+@import "./cmps/AppHeader.css";
+@import "./cmps/Contant-container.css";
+@import "./cmps/Create-post.css";
+@import "./cmps/Follow-modal.css";
+@import "./cmps/Likes-modal.css";
+@import "./cmps/Login-page.css";
+@import "./cmps/Login-switch.css";
+@import "./cmps/MainPage.css";
+@import "./cmps/Messages-page.css";
+@import "./cmps/Notifications.css";
+@import "./cmps/Profile_page.css";
+@import "./cmps/Search-modal.css";
+@import "./cmps/SideBar.css";
+@import "./cmps/Story-details.css";
+@import "./cmps/Story-prev.css";
+@import "./cmps/Suggestions.css";
+@import "./cmps/User-msg.css";
+

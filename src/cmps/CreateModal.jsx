@@ -63,14 +63,6 @@ const CreateStoryModal = () => {
                         {createdStory.imgUrl.length ? <img src={createdStory.imgUrl} /> :
                             <ImgUploader onUploadSuccess={onUploadSuccess} />}
                     </section>
-                    {/* <FileUploader
-                        multiple={true}
-                        handleChange={fileHandleChange}
-                        name="file"
-                        types={fileTypes}
-                    /> */}
-                    {/* <p>{file ? `File name: ${file[0].name}` : "no files uploaded yet"}</p> */}
-
                     <section className='post-info'>
                         <div className='post-user-info'>
                             <section>

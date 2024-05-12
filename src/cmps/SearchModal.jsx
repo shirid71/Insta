@@ -7,13 +7,11 @@ import { loadUsers } from "../store/user.actions"
 
 export function SearchModal({ setSearchModal, searchModal, full, setFull }) {
     const [filterBy, setFilterBy] = useState({ txt: '' })
-    // const elInputRef = useRef(null)
     const users = useSelector(storeState => storeState.userModule.users)
     const filteredUsers = userService.filterUsers(filterBy, users)
     const navigate = useNavigate()
 
     useEffect(() => {
-        // elInputRef.current.focus()
         loadUsers()
     }, [])
 
@@ -53,7 +51,6 @@ export function SearchModal({ setSearchModal, searchModal, full, setFull }) {
                     placeholder="Search"
                     value={filterBy.txt}
                     onChange={handleChange}
-                // ref={elInputRef}
                 />
             </form>
         </section>
