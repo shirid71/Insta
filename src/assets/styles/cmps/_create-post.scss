@@ -26,8 +26,8 @@
     background-color: #fff;
     z-index: 10;
     margin: auto;
-    width: 918px;
-    height: 621px;
+    max-width: 918px;
+    max-height: 621px;
     border-radius: 10px;
 
 
@@ -50,7 +50,7 @@
         }
 
         span {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
             line-height: 24px;
         }
@@ -137,7 +137,7 @@
 
     textarea {
         border: none;
-        font-size: 16px;
+        font-size: 1rem;
         width: 95%;
         height: 200px;
         resize: none;

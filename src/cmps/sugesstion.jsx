@@ -1,6 +1,10 @@
+import { useState } from 'react'
+
 export function Suggestions({ user, suggestedUsers, goToProfile, switchIsOpen, addFollow }) {
 
-    return <div className='suggestions'>
+    const [full, setFull] = useState(true)
+
+    return <div className={full ? "suggestions" : "suggestions mini"} >
         <div className='suggestion-header'>
             <div className='suggestion-user-info'>
                 <img className='suggestion-photo' src={user.imgUrl} onClick={() => goToProfile(user.username)} />

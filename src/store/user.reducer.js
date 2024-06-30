@@ -8,7 +8,6 @@ export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
-export const NEW_NOTIFICATION = 'NEW_NOTIFICATION'
 export const SET_SUGGESTED = 'SET_SUGGESTED'
 
 const initialState = {
@@ -52,14 +51,9 @@ export function userReducer(state = initialState, action) {
         case SET_SCORE:
             newState = { ...state, user: { ...state.user, score: action.score } }
             break
-        case NEW_NOTIFICATION:
-            newState = { ...state, newNotification: action.review }
-            break
         default:
     }
-    // For debug:
-    // window.userState = newState
-    // console.log('State:', newState)
+
     return newState
 
 }

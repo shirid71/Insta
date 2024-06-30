@@ -5,6 +5,24 @@
     gap: 15px;
     font-size: 14px;
 
+    &.mini
+    {
+        display: none;
+        .suggestion-header {
+            display: none;
+        }
+        .suggestion-more {
+            display: none;
+        }
+        .suggestion-options {
+            display: none;
+        }
+        .suggestion-profile {
+            display: none;
+        }
+        
+    }
+    
     .suggestion-header {
         width: 315px;
         display: flex;
@@ -148,13 +166,23 @@
         }
     }
 }
+// /* /////// wide /////// */
+// @include for-wide-layout {
+//   .suggestions {
+//         display: flex;
+//     }
 
-
-/* ////////// Mobile /////////////// */
-
-@include for-mobile-layout {
-
-    .suggestions {
-        display: none;
-    }
-}
+//  }
+//  /* ///////// normal ////// */
+//  @include for-narrow-layout {
+//      .suggestions {
+//          display: flex;
+//          }
+// }
+        
+//  /* ////////// Mobile /////////////// */
+// @include for-mobile-layout {
+//      .suggestions {
+//         display: none;
+//     }
+// }

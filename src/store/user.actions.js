@@ -1,12 +1,12 @@
 import { userService } from "../services/user.service.js";
-// import { socketService } from "../services/socket.service.js";
 import { store } from './store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, NEW_NOTIFICATION, SET_SUGGESTED } from "./user.reducer.js";
+import { LOADING_DONE,LOADING_START_SUGGESTED, LOADING_DONE_SUGGESTED, LOADING_START } from "./system.reducer.js";
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, SET_SUGGESTED  } from "./user.reducer.js";
 
 export async function loadUsers() {
+    console.log('loadUsers')
     try {
         store.dispatch({ type: LOADING_START })
         const users = await userService.getUsers('users')
@@ -19,14 +19,16 @@ export async function loadUsers() {
 }
 
 export async function loadSuggested() {
+    console.log('loadSuggested')
     try {
-        store.dispatch({ type: LOADING_START })
+        store.dispatch({ type: LOADING_START_SUGGESTED })
         const suggestedUsers = await userService.getUsers('suggestedUsers') 
+        console.log('suggestedUsers', suggestedUsers)
         store.dispatch({ type: SET_SUGGESTED, suggestedUsers })
     } catch (err) {
         console.log('UserActions: err in loadsuggestedUsers', err)
     } finally {
-        store.dispatch({ type: LOADING_DONE })
+        store.dispatch({ type: LOADING_DONE_SUGGESTED })
     }
 }
 
@@ -87,18 +89,5 @@ export async function loadUser(userId) {
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)
-    }
-}
-
-export function gotNewNotification(review) {
-    console.log(review)
-    try {
-        store.dispatch({
-            type: NEW_NOTIFICATION,
-            review
-        })
-    } catch(err) {
-        console.log('Notification error', err)
-
     }
 }

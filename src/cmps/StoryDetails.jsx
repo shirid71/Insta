@@ -37,6 +37,7 @@ export function StoryDetails() {
     }
 
     function loadStory() {
+        console.log('loading story')
         storyService.getById(params.id)
             .then((story) => {
                 setStory(story)
@@ -57,19 +58,6 @@ export function StoryDetails() {
         const newComment = storyService.createComment(comment.txt, user)
         story.comments.push(newComment)
         await storyService.save(story)
-
-        const notif = {
-            storyId: story._id,
-            imgUrl: story.imgUrl,
-            storyBy: story.by,
-            notif: `commented your post: ${comment.txt}`,
-            notifBy: {
-                _id: user._id,
-                username: user.username,
-                imgUrl: user.imgUrl
-            },
-        }
-        storyService.sendNotif(notif)
         setComment({ txt: '' })
     }
 
@@ -112,7 +100,6 @@ export function StoryDetails() {
                     imgUrl: user.imgUrl
                 },
             }
-            storyService.sendNotif(notif)
         }
         storyService.save(story)
         setLike(checkLike())
@@ -200,7 +187,6 @@ export function StoryDetails() {
                         </div>
                         <div className="footer-container">
                             <div className="btn-container">
-                                {/* <a><i className="fa-regular fa-heart"></i></a> */}
                                 <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
                                 <a><i className="fa-regular fa-comment"></i></a>
                                 <a><i className="fa-regular fa-paper-plane"></i></a>
@@ -214,7 +200,6 @@ export function StoryDetails() {
                     </section>
                 </div>
                 <div className="input-section">
-                    {/* <EmojiPicker  height={200} width={200} /> */}
                     <span onClick={() => setShowPicker(val => !val)}><i className="fa-regular fa-face-smile"></i></span>
                     <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
                     <a className={comment.txt ? 'active' : 'none'} onClick={addStoryComment}>Post</a>
