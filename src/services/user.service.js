@@ -71,7 +71,6 @@ async function login(userCred) {
 async function signup(userCred) {
     const randImg = await fetchRandomImage()
     if (!userCred.imgUrl) userCred.imgUrl = await fetchRandomImage()
-    // if (!userCred.imgUrl) userCred.imgUrl = 'https://i.pinimg.com/564x/31/44/48/31444808f81fcacc1fb91bf32d3f77ec.jpg'
     const user = await storageService.post(STORAGE_KEY, userCred)
     return saveLocalUser(user)
 }

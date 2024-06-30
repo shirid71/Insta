@@ -30,19 +30,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         story.comments.push(newComment)
         await storyService.save(story)
 
-        const notif = {
-            storyId: story._id,
-            imgUrl: story.imgUrl,
-            storyBy: story.by,
-            notif: `commented your post: ${comment.txt}`,
-            notifBy: {
-                _id: user._id,
-                username: user.username,
-                imgUrl: user.imgUrl
-            },
-        }
-        storyService.sendNotif(notif)
-
         setComment({ txt: '' })
     }
 
@@ -64,18 +51,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                 imgUrl: user.imgUrl
             })
 
-            const notif = {
-                storyId: story._id,
-                imgUrl: story.imgUrl,
-                storyBy: story.by,
-                notif: `Liked your post!`,
-                notifBy: {
-                    _id: user._id,
-                    username: user.username,
-                    imgUrl: user.imgUrl
-                },
-            }
-            storyService.sendNotif(notif)
         }
         storyService.save(story)
         setLike(checkLike())
@@ -124,7 +99,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                     <Link to={story.by.username} className="story-user-name link">{story.by.username}</Link>
                     <div className="time">
                         <span>•</span>
-                        {/* <time>1h</time> */}
                         <time>{getTimePassed(story.upload_time)}</time>
                     </div>
                 </div>

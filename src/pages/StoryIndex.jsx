@@ -6,9 +6,9 @@ import { StoriesList } from '../cmps/StoriesList.jsx'
 import { LikesModal } from '../cmps/LikesModal.jsx';
 import { LoginSwitch } from '../cmps/LoginSwitch.jsx';
 import { loadUsers, loadSuggested } from '../store/user.actions.js';
-import { Suggestions } from '../cmps/sugesstion.jsx';
 import { LoginSignup } from '../cmps/LoginSignup.jsx';
 import { userService } from '../services/user.service'
+import { Suggestions } from '../cmps/Sugesstion.jsx';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -20,9 +20,9 @@ export function StoryIndex() {
     const navigate = useNavigate()
 
     const fetchData = async () => {
-        await loadSuggested()
         await loadStories()
         await loadUsers()
+        await loadSuggested()
     }
     
     useEffect(() => {

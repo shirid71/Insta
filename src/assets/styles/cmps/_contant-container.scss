@@ -1,0 +1,210 @@
+
+
+@include for-mobile-layout {
+
+    .contant-container {
+        /* background-color: red; */
+        width: 100%;
+        height: 100%;
+        margin: 50px 0;
+    }
+
+
+    .profile-contant {
+        background-color: aqua;
+
+    }
+}
+
+/*  normal  */
+@include for-normal-layout {
+
+    .contant-container {
+        margin-left: 245px;
+        width: 100%;
+    }
+
+    .contant {
+        /* display: grid;
+         margin: 2.76rem 29.3vh; */
+        display: flex;
+        justify-content: center;
+        margin: 2.76rem auto;
+        grid-template-columns: 57% 43%;
+        height: 100%;
+
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            margin-right: 64px;
+
+            .story-img {
+                width: 470px;
+                height: 470px;
+                object-fit: cover;
+            }
+
+            .story {
+                width: 470px;
+            }
+        }
+
+        .suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-right: 64px;
+            width: 100%;
+
+            .suggestion {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $clr5;
+
+                .suggestion-img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .suggestion-name {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+
+                .suggestion-follow {
+                    background-color: $clr1;
+                    color: $clr6;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+            }
+        
+        }
+
+    }
+
+}
+
+
+/*  normal  */
+@include for-narrow-layout {
+
+    .contant-container {
+        margin-left: 75px;
+        width: 100%;
+    }
+
+    .contant {
+
+        display: flex;
+        justify-content: center;
+        margin: 2.76rem auto;
+        grid-template-columns: 57% 43%;
+        height: 100%;
+
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            align-items: center;
+
+            .story-img {
+                width: 470px;
+                height: 470px;
+                object-fit: cover;
+            }
+
+            .story {
+                width: 470px;
+            }
+        }
+
+        .suggestions {
+            display: none;      
+        }
+
+    }
+
+}
+
+
+/*  Wide  */
+
+@include for-wide-layout {
+
+    .contant-container {
+        margin-left: 245px;
+        width: 100%;
+    }
+
+    .contant {
+        /* display: grid;
+         margin: 2.76rem 29.3vh; */
+        display: flex;
+        justify-content: center;
+        margin: 2.76rem auto;
+        grid-template-columns: 57% 43%;
+        height: 100%;
+
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            margin-right: 64px;
+
+            .story-img {
+                width: 470px;
+                height: 470px;
+                object-fit: cover;
+            }
+
+            .story {
+                width: 470px;
+            }
+        }
+
+        .suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-right: 64px;
+            width: 100%;
+
+            .suggestion {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $clr5;
+
+                .suggestion-img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .suggestion-name {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+
+                .suggestion-follow {
+                    background-color: $clr1;
+                    color: $clr6;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+            }
+        
+        }
+    }
+}

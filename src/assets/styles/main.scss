@@ -1,0 +1,35 @@
+
+/* Setup */
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+@import "setup/variables";
+@import "setup/loading";
+
+/*  Basics */
+@import "basics/base";
+@import "basics/forms"; 
+@import "basics/helpers";
+@import "basics/layout";
+
+/* Views */
+@import "views/aboutUs";
+
+/* Components */
+@import "cmps/app-footer";
+@import "cmps/app-header";
+@import "cmps/app-container";
+@import "cmps/contant-container";
+@import "cmps/create-post";
+@import "cmps/follow-modal";
+@import "cmps/likes-modal";
+@import "cmps/login-page";
+@import "cmps/login-switch";
+@import "cmps/profile-page";
+@import "cmps/search-modal";
+@import "cmps/side-bar";
+@import "cmps/story-details";
+@import "cmps/story-prev";
+@import "cmps/suggestions";
+@import "cmps/user-msg";
+

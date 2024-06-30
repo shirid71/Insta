@@ -7,12 +7,13 @@ export function LoginSignup() {
     const [credentials, setCredentials] = useState(userService.getEmptyUser())
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
+    const [suggestedUsers, setSuggestedUsers] = useState([])
     const [message, setMessage] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
         loadUsers('users')
-        //loadSuggested()
+        loadSuggested()
     }, [])
 
 
@@ -81,14 +82,6 @@ export function LoginSignup() {
 
                 {!isSignup && <form className="login-form" onSubmit={onLogin}>
 
-                    {/* <select
-                        name="username"
-                        value={credentials.username}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select User</option>
-                        {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                    </select> */}
 
                             <input type="text" name="username" placeholder='Username' onChange={handleChange}/>
                             <input type="password" name="password" placeholder='Password' onChange={handleChange}/>

@@ -11,8 +11,7 @@ export const storyService = {
   getEmptyStory,
   onRemoveStoryComment,
   saveLike,
-  createComment,
-  sendNotif
+  createComment
 }
 const STORAGE_KEY = 'story'
 const curStories = utilService.loadFromStorage(STORAGE_KEY)
@@ -21,13 +20,7 @@ if(!curStories){
 }
 window.ss = storyService
 
-// async function onAddStoryComment(storyId, comment) {
-//   // const updatedStory = await storageService.get(STORAGE_KEY, storyId)
-//   const updatedStory = await getById(storyId)
-//   updatedStory.comments.push(comment)
-//   save(updatedStory)
-//   // return storageService.post(STORAGE_KEY)
-// }
+
 
 function onRemoveStoryComment(storyId) {
   return storageService.remove(STORAGE_KEY, storyId)
@@ -52,9 +45,6 @@ async function remove(storyId) {
   await storageService.remove(STORAGE_KEY, storyId)
 }
 
-async function sendNotif(notif) {
-  await storageService.post(`story/notification`, notif)
-}
 
 async function save(story) {
   var savedStory
@@ -69,8 +59,8 @@ async function save(story) {
       username: user.username,
       fullname: user.fullname,
       imgUrl: user.imgUrl,
-      upload_time: new Date()
     }
+    story.upload_time = new Date()
     savedStory = await storageService.post(STORAGE_KEY, story)
   }
   console.log(savedStory)

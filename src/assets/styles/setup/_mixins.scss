@@ -7,13 +7,13 @@
 }
 
 @mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint + 40px)) {
+    @media (min-width: calc($mobile-breakpoint + 40px)) and (max-width: calc($narrow-breakpoint + 40px)){
         @content;
     }
 }
 
 @mixin for-normal-layout {
-    @media (min-width: calc($narrow-breakpoint + 40px)) {
+    @media (min-width: calc($narrow-breakpoint + 40px)) and (max-width: calc($normal-breakpoint + 40px)) {
         @content;
     }
 }
@@ -23,6 +23,13 @@
         @content;
     }
 }
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .example-class {
+      font-size: 16px;
+    }
+  }
+  
 
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
@@ -48,7 +55,7 @@
     }
   }
   
-  // Mixin for removing hover efects on iphone screen
+  /* Mixin for removing hover efects on iphone screen */
   @mixin hover-supported {    
     @media not all and (pointer: coarse) {
         &:hover {

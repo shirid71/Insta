@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: column;
     border-bottom: 0.01px solid #c2c2c2;
+    border-bottom-color: rgb(38, 38, 38);
+    border-right-color: rgb(38, 38, 38);
+    border-left-color: rgb(38, 38, 38);
+    border-top-color: rgb(38, 38, 38);
+    width: 470px;
+    height: 650px;
 
     .story-header {
         display: flex;
@@ -34,7 +40,7 @@
             color: #c2c2c2;
             fill: #c2c2c2;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
 
             &:hover {
                 color: rgb(38, 38, 38);
@@ -53,8 +59,8 @@
     }
 
     .story-img {
-        /*  max-height: 400px; */
-        max-height: 580;
+        max-width: 100% ;
+        height: auto;
         object-fit: cover;
     }
 
@@ -185,6 +191,9 @@
 /* ///////// mobile////// */
 @include for-mobile-layout {
     .story-preview {
+        width: 390px;
+        height: 844px;
+
         .story-header {
             margin-top: 10px;
             padding: 0 6px;
@@ -192,11 +201,18 @@
         }
 
         .story-img {
-            max-height: 400px;
+            width: 100%;
+            height: auto;
         }
 
         .story-footer {
             padding: 0 16px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 13px;
+            position: relative;
         }
 
         input {
@@ -206,8 +222,67 @@
 }
 
 /* ///////// normal ////// */
-@include for-narrow-layout {}
+@include for-narrow-layout {
+    .story-preview {
+        width: 470px;
+        height: 650px;
 
+        .story-header {
+            margin-top: 10px;
+            padding: 0 6px;
+            height: 48px;
+        }
+
+        .story-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .story-footer {
+            padding: 0 16px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 13px;
+            position: relative;
+        }
+
+        input {
+            display: none;
+        }
+    }
+}
 
 /* ///////// Wide ////////// */
-@include for-wide-layout {}
+@include for-wide-layout {
+    .story-preview {
+        width: 470px;
+        height: 650px;
+
+        .story-header {
+            margin-top: 10px;
+            padding: 0 6px;
+            height: 48px;
+        }
+
+        .story-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .story-footer {
+            padding: 0 16px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 13px;
+            position: relative;
+        }
+
+        input {
+            display: none;
+        }
+    }
+}

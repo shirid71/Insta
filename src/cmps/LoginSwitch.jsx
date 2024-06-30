@@ -7,15 +7,15 @@ import { useSelector } from 'react-redux';
 
 export function LoginSwitch({ switchIsOpen }) {
     const [users, setUsers] = useState([])
+    const [suggestedUsers, setSuggestedUsers] = useState([])
     const [loginModal, onLoginModal] = useState(false)
     const logedinUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 
-    console.log(users)
 
     useEffect(() => {
         loadUsers()
-     //  loadSuggested()
+        loadSuggested()
     }, [])
 
     function onClose() {
@@ -52,6 +52,11 @@ export function LoginSwitch({ switchIsOpen }) {
     async function loadUsers() {
         const users = await userService.getUsers('users')
         setUsers(users)
+    }
+
+    async function loadSuggested() {
+        const users = await userService.getUsers('suggestedUsers')
+        setSuggestedUsers(users)
     }
 
     function handleChange(user) {

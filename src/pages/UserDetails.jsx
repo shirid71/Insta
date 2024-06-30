@@ -1,13 +1,10 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { loadStories } from "../store/story.actions"
-import { IoMdApps } from 'react-icons/io'
-import { BsBookmark, BsPersonSquare } from 'react-icons/bs'
 import { useNavigate, useParams } from 'react-router-dom'
 import { loadSuggested, loadUsers } from '../store/user.actions'
 import { userService } from '../services/user.service'
-import { FollowModal } from '../cmps/FollowModal'
 
 export function UserDetails() {
   const user = useSelector(storeState => storeState.userModule.user)
@@ -21,10 +18,6 @@ export function UserDetails() {
   const [follow, setFollow] = useState('')
   const [toggle, setToggle] = useState('posts')
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const [isFollowModalOpen, setFollowModalIsOpen] = useState([])
-  // const [followModal, setFollowModal] = useState(false)
-
 
   const navigate = useNavigate()
 
@@ -66,9 +59,6 @@ export function UserDetails() {
     return user.following.some(user => user._id === userProfile._id)
   }
 
-  function goToMessages() {
-    navigate(`/inbox/${userProfile._id}`)
-  }
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -119,7 +109,6 @@ export function UserDetails() {
               <a>{userProfile.username}</a>
               <div>
                 {checkFollow() ? <button onClick={toggleFollow}>Following</button> : <button onClick={toggleFollow} className='follow'>Follow</button>}
-                <button onClick={goToMessages}>Message</button>
               </div>
             </div>}
           <div className="user-info">

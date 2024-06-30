@@ -23,6 +23,7 @@ export function getActionUpdateStory(story) {
 }
 
 export async function loadStories() {
+    console.log('loadStories')
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
 
     try {
